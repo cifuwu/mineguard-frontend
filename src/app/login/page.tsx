@@ -86,7 +86,7 @@ function SignIn() {
           console.log(data.data.login.accessToken);
 
           const accessToken = data.data.login.accessToken;
-          Cookies.set('accessJWT', accessToken, { expires: 1 });
+          Cookies.set('accessJWT', accessToken);
           router.push("/home");
         }
       })
