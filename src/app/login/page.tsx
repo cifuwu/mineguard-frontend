@@ -27,6 +27,7 @@ import { RiEyeCloseLine } from 'react-icons/ri';
 import { HSeparator } from 'components/separator/Separator';
 import CenteredAuth from 'components/auth/variants/CenteredAuthLayout/page';
 import NavLink from 'components/link/NavLink';
+import { useRouter } from 'next/navigation';
 
 const ENDPOINT = process.env.NEXT_PUBLIC_ENDPOINT;
 
@@ -38,7 +39,7 @@ function SignIn() {
   const textColorDetails = useColorModeValue('navy.700', 'secondaryGray.600');
   const textColorBrand = useColorModeValue('brand.500', 'white');
   const brandStars = useColorModeValue('brand.500', 'brand.400');
-
+  const router = useRouter();
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -86,7 +87,7 @@ function SignIn() {
 
           const accessToken = data.data.login.accessToken;
           Cookies.set('accessJWT', accessToken, { expires: 1 });
-          window.location.href = "/home";
+          router.push("/home");
         }
       })
       .catch((error) => {
